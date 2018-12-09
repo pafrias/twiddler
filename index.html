@@ -4,6 +4,7 @@
     <link rel="stylesheet" type="text/css" href="resources/style.css">
     <script src="resources/jquery.js"></script>
     <script src="resources/data_generator.js"></script>
+    <script src="resources/settingslog"></script>
   </head>
   <body>
     <header>
@@ -14,13 +15,20 @@
     </header>
     <div class="main">
       <aside class="nav-bar">
+        <div class=profile>
+          <p> Log in </p>
+          <input></input>
+        </div>
         <a class="button home">Home</a>
-        <a class="button update">Update Feed</a>
+        <a class="button refresh">Refresh Feed</a>
         <a class="button settings">Settings</a>
       </aside>
-      <div class="tweet">
-      </div>
-      <div class="twid_Console">
+      <div class="twidconsole">
+        <div class="tweetentry">
+          <a class="button user">You are not logged in</a>
+        </div>
+        <div class="twidfeed">
+        </div>
       </div>
     </div>
     <footer>
@@ -28,37 +36,56 @@
     </footer>
     <script>
 
-      var current_page = 'home';
-      var $console = $('div.twid_Console');
-      var $home = $('a.button.home');
-      var $update = $('a.button.update');
-      var $settings = $('a.button.settings');
-      var $user = $('a.button.user');
+      let $twidConsole = $('div.twidconsole'),
+          $home = $('a.button.home'),
+          $refresh = $('a.button.refresh'),
+          $settings = $('a.button.settings'),
+          viewPage = 'home',
+          viewUser = null;
+          loggedIn = false;
+
+      $home.click(function(){
+        update('home', null);
+      });
+
+      $refresh.click(function(){
+        update();
+      });
       
-      $home.click(function() {
-        update('home');
-      });
+      $(function() {
+        $(document).on('click', '.user', function(){
+          $this = $(this);
+          var handle = $this.text().slice(1, Infinity);
+          update('users', handle)
+        });
+       });
 
-      $update.click(function() {
-        update(current_page);
-      });
+      const update = (feed=viewPage, user=viewUser) => {
 
-      const update = function(feed){
-        $console.html('');
+        $("div.twidconsole .twidfeed").html('');
+//        if (feed === 'home') {
+//          $(".twidentry").setAttribute("display", "none");
+//        } else if (feed === 'users') {
+//          $(".twidentry").setAttribute("display", "inherit");
+//        };
 
-        var index = streams[feed].length - 1;
+        viewPage = feed;
+        viewUser = user;
+
+        var index = (viewUser === null) ? streams[viewPage].length - 1 : streams[viewPage][viewUser].length - 1;
         while(index >= 0){
-          var tweet = streams[feed][index];
+          var tweet = (viewUser === null) ? streams[viewPage][index] : streams[viewPage][viewUser][index];
           var $tweet = $('<section></section>');
           $('<a class="button user">@' + tweet.user + '</a>').appendTo($tweet);
           $('<p>' + tweet.message + '</p>').appendTo($tweet);
           $('<time>Sent ' + (Math.floor((Date.now() - tweet.created_at) / 1000)) + ' seconds ago</time>').appendTo($tweet);
-          $tweet.appendTo($console);
+          $tweet.appendTo("div.twidconsole .twidfeed");
           index -= 1;
         }
       };
 
-      $(document).ready(update(current_page));
+      $(document).ready(update('home', null));
+
     </script>
   </body>
 </html>

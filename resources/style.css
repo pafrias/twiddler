@@ -23,6 +23,7 @@ time, mark, audio, video {
 }
 
 body {
+	pointer-events: auto;
 	background-color: #c6f1ff;
 }
 
@@ -64,6 +65,19 @@ aside.nav-bar {
 	padding: 20px 0px 0px 10px;
 }
 
+aside div.profile {
+	display: block;
+	background-image: radial-gradient(#fff, #00c0ffad 150%);
+	color: black;
+	padding: 10px;
+	margin: 20px;
+	font-family: system-ui;
+	font-weight: bold;
+	text-align: center;
+	border: 3px solid purple;
+	border-radius: 5px;
+}
+
 aside.nav-bar a {
 	display: block;
 	background-image: radial-gradient(#fff, #00c0ffad 150%);
@@ -77,14 +91,7 @@ aside.nav-bar a {
 	border-radius: 5px;
 }
 
-@media (hover:hover) {
-	aside.nav-bar a:hover {
-		background: white;
-		color: #00c0ffad;
-	}
-}
-
-div.twid_Console {
+div.twidconsole {
 	float: right;
 	background-color: #c6f1ff;
 	height: 80%;
@@ -92,7 +99,7 @@ div.twid_Console {
 	padding: 20px 30px;
 }
 
-div.twid_Console section {
+div.twidconsole .tweetentry {
 	font-family: Arial, Helvetica, sans-serif;
 	background-image: radial-gradient(#fff, #00c0ffad 125%);
 	min-height: 80px;
@@ -104,12 +111,28 @@ div.twid_Console section {
 	border-radius: 5px;
 }
 
-div.twid_Console section p {
+div.twidconsole section {
+	font-family: Arial, Helvetica, sans-serif;
+	background-image: radial-gradient(#fff, #00c0ffad 125%);
+	min-height: 80px;
+	/*max-height: 25%;*/
+	width: 40%;
+	padding: 20px;
+	margin: 20px;
+	border: 2px solid purple;
+	border-radius: 5px;
+}
+
+div.twidconsole section a {
+	color: royalblue;
+}
+
+div.twidconsole section p {
 	font-size: 1.5em;
 	padding-left: 10px;
 }
 
-div.twid_Console section time {
+div.twidconsole section time {
 	font-size: 0.8em;
 	font-weight: bold;
 	float: right;
@@ -124,4 +147,17 @@ footer {
 
 footer h6 {
 	text-align: center;
+}
+
+@media (hover:hover) {
+	div.twidconsole a:hover {
+		color: teal;
+		cursor: pointer;
+
+	}
+	aside.nav-bar a:hover {
+		background: white;
+		color: #00c0ffad;
+		cursor: pointer;
+	}
 }
