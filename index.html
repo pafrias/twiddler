@@ -8,7 +8,11 @@
   </head>
   <body>
     <header>
-      <div class="herald">
+      <div class="login">
+        <p> Log in </p>
+        <input></input>
+      </div>
+      <div class="logo">
         <h1>Welcome to Twiddler!</h1>
         <h2>... for all your twiddling needs</h2>
       </div>
@@ -16,8 +20,6 @@
     <div class="main">
       <aside class="nav-bar">
         <div class=profile>
-          <p> Log in </p>
-          <input></input>
         </div>
         <a class="button home">Home</a>
         <a class="button refresh">Refresh Feed</a>
@@ -63,11 +65,6 @@
       const update = (feed=viewPage, user=viewUser) => {
 
         $("div.twidconsole .twidfeed").html('');
-//        if (feed === 'home') {
-//          $(".twidentry").setAttribute("display", "none");
-//        } else if (feed === 'users') {
-//          $(".twidentry").setAttribute("display", "inherit");
-//        };
 
         viewPage = feed;
         viewUser = user;
