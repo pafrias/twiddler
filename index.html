@@ -1,27 +1,64 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="jquery.js"></script>
-    <script src="data_generator.js"></script>
+    <link rel="stylesheet" type="text/css" href="resources/style.css">
+    <script src="resources/jquery.js"></script>
+    <script src="resources/data_generator.js"></script>
   </head>
   <body>
+    <header>
+      <div class="herald">
+        <h1>Welcome to Twiddler!</h1>
+        <h2>... for all your twiddling needs</h2>
+      </div>
+    </header>
+    <div class="main">
+      <aside class="nav-bar">
+        <a class="button home">Home</a>
+        <a class="button update">Update Feed</a>
+        <a class="button settings">Settings</a>
+      </aside>
+      <div class="tweet">
+      </div>
+      <div class="twid_Console">
+      </div>
+    </div>
+    <footer>
+      <h6>&copy; Frias Productions LLC 2018</h6>
+    </footer>
     <script>
 
-      $(document).ready(function(){
-        var $body = $('body');
-        $body.html('');
-
-        var index = streams.home.length - 1;
-        while(index >= 0){
-          var tweet = streams.home[index];
-          var $tweet = $('<div></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
-          $tweet.appendTo($body);
-          index -= 1;
-        }
-
+      var current_page = 'home';
+      var $console = $('div.twid_Console');
+      var $home = $('a.button.home');
+      var $update = $('a.button.update');
+      var $settings = $('a.button.settings');
+      var $user = $('a.button.user');
+      
+      $home.click(function() {
+        update('home');
       });
 
+      $update.click(function() {
+        update(current_page);
+      });
+
+      const update = function(feed){
+        $console.html('');
+
+        var index = streams[feed].length - 1;
+        while(index >= 0){
+          var tweet = streams[feed][index];
+          var $tweet = $('<section></section>');
+          $('<a class="button user">@' + tweet.user + '</a>').appendTo($tweet);
+          $('<p>' + tweet.message + '</p>').appendTo($tweet);
+          $('<time>Sent ' + (Math.floor((Date.now() - tweet.created_at) / 1000)) + ' seconds ago</time>').appendTo($tweet);
+          $tweet.appendTo($console);
+          index -= 1;
+        }
+      };
+
+      $(document).ready(update(current_page));
     </script>
   </body>
 </html>
