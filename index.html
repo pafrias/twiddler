@@ -2,13 +2,13 @@
 <html lang="en">
   <head>
     <title>Twiddler</title>
-    <link rel="stylesheet" type="text/css" href="style/bluestyle.css">
+    <link rel="stylesheet" type="text/css" href="style/bluepalette.css">
     <script src="scripts/jquery.js"></script>
     <script src="scripts/main.js"></script>
   </head>
   <body>
     <header>
-      <fieldset>
+      <fieldset class="login">
         <legend>Log In</legend>
         <label>
           username
@@ -33,9 +33,10 @@
           <time>last tweet sent fill</time>
         </div>
         <fieldset>
-          <a class="button home">Home</a>
-          <a class="button refresh">Refresh Feed</a>
-          <a href="pages/settings.html" class="button settings">Settings</a>    
+          <button class="home" onclick="update('home')">Home</button>
+          <button class="refresh" onclick="update()">Refresh Feed</button>
+          <button class="settings">Settings</button>  <!--needs work -->
+          <a class="feedback" href="mailto:pafrias90@gmail.com?subject=Feedback" target="_blank">Feedback</a>
         </fieldset>  
       </aside>
       <div class="twidconsole">
@@ -51,22 +52,13 @@
       <h6>&copy; Frias Productions LLC 2018</h6>
     </footer>
     <script src="scripts/data_generator.js"></script>
-    <script src="scripts/updatefeed.js"></script>
     <script>
-
-      $("a.home").click(function(){
-      update('home', null);
-      });
-
-      $("a.refresh").click(function(){
-      update(viewPage, viewUser);
-      });
 
       $(function() {
       $(document).on('click', '.user', function(){
         $this = $(this);
         var handle = $this.text().slice(1, Infinity);
-        update('users', handle)
+        update(handle)
         });
       });
 

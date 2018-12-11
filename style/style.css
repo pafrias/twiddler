@@ -1,0 +1,169 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe, blockquote, pre,
+a, abbr, acronym, address, big, cite, code, del, dfn, em, h1, h2,
+h3, h4, h5, h6, img, ins, kbd, q, s, samp, small, strike, strong,
+sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video, textarea {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+
+body {
+	pointer-events: auto;
+	font-family: system-ui;
+}
+
+header {
+	display: block;
+	text-align: center;
+}
+
+header fieldset.login {
+	margin: 0 0 0 2%;
+	border-style: solid;
+	border-width: 2px;
+	float: left;
+}
+header fieldset.login input {
+	display: block;
+}
+
+header div.logo {
+	width: 60%;
+	padding: 10px;
+	margin: 20px auto;
+	border-width: 5px
+	border-radius: 5px;
+}
+
+header h1 {
+	font-size: 3.5em;
+}
+
+header h2 {
+	padding-left: 50px;
+}
+
+main {
+	display: block;
+	width: 100%;
+}
+
+aside.nav_bar {
+	float: left;
+	height: fill;
+	padding: 20px 0px 0px 10px;
+	border-right: 5px solid;
+}
+
+aside div.visitor_profile {
+	display: block;
+	padding: 10px;
+	margin: 20px;
+	text-align: center;
+	border: 3px solid;
+	border-radius: 5px;
+}
+
+aside div.visitor_profile img.profile_picture {
+	border: 2px;
+	border-radius: 50%;
+	width: 150px;
+	height: 150px;
+}
+
+
+aside.nav_bar button {
+	display: block;
+	padding: 10px;
+	margin: 20px;
+	text-align: center;
+	border: 3px solid;
+	border-radius: 5px;
+}
+
+div.twidconsole {
+	float: right;
+	height: 80%;
+	width: 1000px;
+	padding: 20px 30px;
+}
+
+main div.twidconsole div.twidentry {
+	min-height: 90px;
+	max-width: 40%;
+	padding: 20px;
+	margin: 20px;
+	border: 2px solid;
+	border-radius: 5px;
+}
+main div.twidentry textarea {
+	resize: none;
+	width: 95%;
+	padding: 5px;
+	height: 70px;
+}
+
+div.twidconsole article {
+	height: 200px;
+	max-width: 80%;
+	padding: 2.5%;
+	margin: 5px;
+	border: 3px solid;
+	border-radius: 8px;
+}
+
+div.twidconsole article img {
+	height: 95%;
+	float: left;
+	margin-right: 5%;
+	border-radius: 50%;
+}
+
+div.twidconsole article a {
+	font-size: 1.4em;
+}
+
+div.twidconsole article p {
+	min-height: 40%;
+	font-size: 1.2em;
+	margin-left: 10px;
+}
+
+div.twidconsole article time {
+	font-size: 0.8em;
+	font-weight: bold;
+	float: right;
+}
+
+footer {
+	width: 100%;
+	display: inline-block;
+	float: none;
+	position: relative;
+}
+
+footer h6 {
+	text-align: center;
+}

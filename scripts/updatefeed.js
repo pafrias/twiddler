@@ -1,10 +1,9 @@
 
-var viewPage = 'home',
-    viewUser = null;
+var lastFeedViewed = null;
 
 const checkTime = (date) => {
   now = (Date.now() - Date.parse(date)) / 1000;
-  now = Math.floor(now)
+  now = Math.floor(now);
   if (now < 60) {
     return now + ' seconds ago';
   } else if (now < 3600) { // seconds in an hour
@@ -19,16 +18,15 @@ const checkTime = (date) => {
   }
 }
 
-const update = (feed=viewPage, user=viewUser) => {
+const update = (feedRequest=lastFeedViewed) => {
 
-  viewPage = feed;
-  viewUser = user;
+  lastFeedViewed = feedRequest;
 
   $("div.twidconsole .twidfeed").html('');
 
-  var index = (viewUser === null) ? streams[viewPage].length - 1 : streams[viewPage][viewUser].length - 1;
+  var index = (feedRequest === 'home') ? streams[feedRequest].length - 1 : streams.users[feedRequest].feed.length - 1;
   while(index >= 0){
-    var tweet = (viewUser === null) ? streams[viewPage][index] : streams[viewPage][viewUser][index];
+    var tweet = (feedRequest === 'home') ? streams[feedRequest][index] : streams.users[feedRequest].feed[index];
     var $tweet = $('<section></section>');
     $('<a class="button user">@' + tweet.user + '</a>').appendTo($tweet);
     $('<p>' + tweet.message + '</p>').appendTo($tweet);

@@ -1,0 +1,97 @@
+@import url('style.css');
+
+body {
+	background-color: #c6f1ff;
+}
+
+header fieldset {
+	background-color: #c6f1ff;
+	color: gray;
+}
+header div.logo {
+	background-color: white;
+	opacity: 60%;
+	border-color: purple;
+}
+
+header h1 {
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	font-color: #3f51b5;
+	text-shadow: 2px 2px gray;
+}
+
+header h2 {
+	font-family: Georgia, serif;
+	font-color: blue;
+}
+
+aside.nav_bar {
+	border-color: gray;
+}
+
+aside div.visitor_profile {
+	background-image: radial-gradient(#fff, #00c0ffad 150%);
+	color: black;
+	font-weight: bold;
+	border-color: purple;
+}
+
+aside div.visitor_profile img.profile_picture {
+}
+
+
+aside.nav_bar button {
+	background-image: radial-gradient(#fff, #00c0ffad 150%);
+	color: black;
+	font-weight: bold;
+	border-color: purple;
+}
+
+div.twidconsole {
+	background-color: #c6f1ff;
+}
+
+main div.twidconsole div.twidentry {
+	border-color: purple;
+	font-family: Arial, Helvetica, sans-serif;
+	background-image: radial-gradient(#fff, #00c0ffad 125%);
+}
+main div.twidentry textarea {
+}
+
+div.twidconsole article {
+	font-family: Arial, Helvetica, sans-serif;
+	background-image: radial-gradient(#fff, #00c0ffad 125%);
+	border-color: purple;
+}
+
+div.twidconsole article a {
+	color: royalblue;
+}
+
+div.twidconsole article p {
+}
+
+div.twidconsole article time {
+	font-size: 0.8em;
+	font-weight: bold;
+}
+
+footer {
+}
+
+footer h6 {
+}
+
+@media (hover:hover) {
+	div.twidconsole a:hover {
+		color: teal;
+		cursor: pointer;
+
+	}
+	aside.nav_bar button:hover {
+		background: white;
+		color: #00c0ffad;
+		cursor: pointer;
+	}
+}

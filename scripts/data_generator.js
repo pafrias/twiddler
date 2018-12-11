@@ -11,7 +11,7 @@ var randomMessage = function(){
 
 var addTweet = function(newTweet){
   var username = newTweet.user;
-  streams.users[username].push(newTweet);
+  streams.users[username].feed.push(newTweet);
   streams.home.push(newTweet);
   sessionStorage.setItem("streams", JSON.stringify(streams));
 };
