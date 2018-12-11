@@ -13,7 +13,7 @@ table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed, 
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+time, mark, audio, video, textarea {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -25,11 +25,18 @@ time, mark, audio, video {
 body {
 	pointer-events: auto;
 	background-color: #c6f1ff;
+	
+	font-family: system-ui;
 }
 
 header {
 	width: 100%;
 	text-align: center;
+}
+
+header div.login {
+	display: block;
+	float: left;
 }
 
 header div.logo {
@@ -54,37 +61,43 @@ header h2 {
 	font-color: blue;
 	padding-left: 50px;
 }
-div.main {
+main {
 	width: 100%;
 }
 
-aside.nav-bar {
+aside.nav_bar {
 	display: inline-block;
 	float: left;
 	position: relative;
 	padding: 20px 0px 0px 10px;
+	border-left: 5px solid gray;
 }
 
-aside div.profile {
+aside div.visitor_profile {
 	display: block;
 	background-image: radial-gradient(#fff, #00c0ffad 150%);
 	color: black;
 	padding: 10px;
 	margin: 20px;
-	font-family: system-ui;
 	font-weight: bold;
 	text-align: center;
 	border: 3px solid purple;
 	border-radius: 5px;
 }
 
-aside.nav-bar a {
+aside div.visitor_profile img.profile_picture {
+	border-radius: 40px;
+	width: 80px;
+	height: 80px;
+}
+
+
+aside.nav_bar a {
 	display: block;
 	background-image: radial-gradient(#fff, #00c0ffad 150%);
 	color: black;
 	padding: 10px;
 	margin: 20px;
-	font-family: system-ui;
 	font-weight: bold;
 	text-align: center;
 	border: 3px solid purple;
@@ -99,24 +112,28 @@ div.twidconsole {
 	padding: 20px 30px;
 }
 
-div.twidconsole .tweetentry {
-	font-family: Arial, Helvetica, sans-serif;
-	background-image: radial-gradient(#fff, #00c0ffad 125%);
-	min-height: 80px;
-	/*max-height: 25%;*/
-	width: 40%;
+main div.twidconsole div.twidentry {
+	min-height: 90px;
+	max-width: 40%;
 	padding: 20px;
 	margin: 20px;
 	border: 2px solid purple;
 	border-radius: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	background-image: radial-gradient(#fff, #00c0ffad 125%);
+}
+main div.twidentry textarea {
+	resize: none;
+	width: 90%;
+	padding: 5px;
+	height: 70px;
 }
 
 div.twidconsole section {
 	font-family: Arial, Helvetica, sans-serif;
 	background-image: radial-gradient(#fff, #00c0ffad 125%);
-	min-height: 80px;
-	/*max-height: 25%;*/
-	width: 40%;
+	min-height: 90px;
+	max-width: 40%;
 	padding: 20px;
 	margin: 20px;
 	border: 2px solid purple;
@@ -128,7 +145,7 @@ div.twidconsole section a {
 }
 
 div.twidconsole section p {
-	font-size: 1.5em;
+	font-size: 1.25em;
 	padding-left: 10px;
 }
 
@@ -155,7 +172,7 @@ footer h6 {
 		cursor: pointer;
 
 	}
-	aside.nav-bar a:hover {
+	aside.nav_bar a:hover {
 		background: white;
 		color: #00c0ffad;
 		cursor: pointer;

@@ -1,88 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <link rel="stylesheet" type="text/css" href="resources/style.css">
-    <script src="resources/jquery.js"></script>
-    <script src="resources/data_generator.js"></script>
-    <script src="resources/settingslog"></script>
+    <title>Twiddler</title>
+    <link rel="stylesheet" type="text/css" href="style/bluestyle.css">
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/main.js"></script>
   </head>
   <body>
     <header>
-      <div class="login">
-        <p> Log in </p>
-        <input></input>
-      </div>
+      <fieldset>
+        <legend>Log In</legend>
+        <label>
+          username
+          <input type="text" name="username" placeholder="you@gomail.com" required>
+        </label>
+        <label>
+          password
+          <input type="text" name="password" placeholder="**********" required>
+        </label>
+        <input type="submit" name="login" value="Log In">
+      </fieldset>
       <div class="logo">
         <h1>Welcome to Twiddler!</h1>
         <h2>... for all your twiddling needs</h2>
       </div>
     </header>
-    <div class="main">
-      <aside class="nav-bar">
-        <div class=profile>
+    <main>
+      <aside class="nav_bar">
+        <div class="visitor_profile">
+          <img class="profile_picture" src="images/winston.jpg">
+          <p>Dummy Username</p>
+          <time>last tweet sent fill</time>
         </div>
-        <a class="button home">Home</a>
-        <a class="button refresh">Refresh Feed</a>
-        <a class="button settings">Settings</a>
+        <fieldset>
+          <a class="button home">Home</a>
+          <a class="button refresh">Refresh Feed</a>
+          <a href="pages/settings.html" class="button settings">Settings</a>    
+        </fieldset>  
       </aside>
       <div class="twidconsole">
-        <div class="tweetentry">
-          <a class="button user">You are not logged in</a>
+        <div class="twidentry">
+          <textarea name="twidsender" maxlength="280" placeholder="Enter your twid here"></textarea>
+          <input type="submit" name="send" value="send">
         </div>
         <div class="twidfeed">
         </div>
       </div>
-    </div>
+    </main>
     <footer>
       <h6>&copy; Frias Productions LLC 2018</h6>
     </footer>
+    <script src="scripts/data_generator.js"></script>
+    <script src="scripts/updatefeed.js"></script>
     <script>
 
-      let $twidConsole = $('div.twidconsole'),
-          $home = $('a.button.home'),
-          $refresh = $('a.button.refresh'),
-          $settings = $('a.button.settings'),
-          viewPage = 'home',
-          viewUser = null;
-          loggedIn = false;
-
-      $home.click(function(){
-        update('home', null);
+      $("a.home").click(function(){
+      update('home', null);
       });
 
-      $refresh.click(function(){
-        update();
+      $("a.refresh").click(function(){
+      update(viewPage, viewUser);
       });
-      
+
       $(function() {
-        $(document).on('click', '.user', function(){
-          $this = $(this);
-          var handle = $this.text().slice(1, Infinity);
-          update('users', handle)
+      $(document).on('click', '.user', function(){
+        $this = $(this);
+        var handle = $this.text().slice(1, Infinity);
+        update('users', handle)
         });
-       });
-
-      const update = (feed=viewPage, user=viewUser) => {
-
-        $("div.twidconsole .twidfeed").html('');
-
-        viewPage = feed;
-        viewUser = user;
-
-        var index = (viewUser === null) ? streams[viewPage].length - 1 : streams[viewPage][viewUser].length - 1;
-        while(index >= 0){
-          var tweet = (viewUser === null) ? streams[viewPage][index] : streams[viewPage][viewUser][index];
-          var $tweet = $('<section></section>');
-          $('<a class="button user">@' + tweet.user + '</a>').appendTo($tweet);
-          $('<p>' + tweet.message + '</p>').appendTo($tweet);
-          $('<time>Sent ' + (Math.floor((Date.now() - tweet.created_at) / 1000)) + ' seconds ago</time>').appendTo($tweet);
-          $tweet.appendTo("div.twidconsole .twidfeed");
-          index -= 1;
-        }
-      };
+      });
 
       $(document).ready(update('home', null));
-
     </script>
   </body>
 </html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Twiddler Settings</title>
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/main.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="login">
+        <p> Log in </p> <!-- hide this div for settings -->
+        <input type="text" name="username"> <!-- hide this div for settings -->
+        <input type="text" name="password"> <!-- hide this div for settings -->
+      </div>  <!-- hide this div for settings -->
+      <div class="logo">
+        <h1>Welcome to Twiddler!</h1>
+        <h2>... for all your twiddling needs</h2>
+      </div>
+    </header>
+    <main>
+      <aside class="nav-bar">
+        <div class=profile>
+        </div>
+        <a class="button home">Home</a>
+        <a class="button commit_settings">Commit Settings</a>
+      </aside>
+      <div class="twidconsole">
+        <fieldset>
+          <legend> Settings </legend>
+            <label>Color Scheme
+              <input type="radio" name="color scheme" value="blue" checked> Blue
+              <input type="radio" name="color scheme" value="dark"> Dark
+              <input type="radio" name="color scheme" value="mahogany"> Mahogany
+            </label>
+            <label>Tweets per page
+              <select name="tweet limit" multiple>
+                <option value="20" selected>20</option>
+                <option value="30">30</option>
+                <option value="40">40</option>
+              </select>
+            </label>
+          </div>
+        <div class="twidsender"><!-- hide this div for settings -->
+          <textarea name="tweetbody">Enter Tweet here</textarea>
+        </div>
+        <div class="twidfeed"><!-- hide this div for settings -->
+        </div>
+      </div>
+    </div>
+    <footer>
+      <h6>&copy; Frias Productions LLC 2018</h6>
+    </footer>
+  </body>
+</html>
